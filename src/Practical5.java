@@ -85,6 +85,8 @@ public class Practical5 {
 
     }
 
+    // empty method to allow it to compile
+    void processLine(String line) {}
 
 
 
