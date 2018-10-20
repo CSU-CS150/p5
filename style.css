@@ -1,0 +1,32 @@
+/* This is a simple style sheet
+ * You are free to modify it, as it won't be graded
+ */
+
+/** the following two are based on CSU style guidelines to look like a CSU site **/
+body {
+    font-family: 'prox-regular', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'factoria-book', sans-serif;
+    font-weight:normal;
+}
+
+h2 {
+    margin-bottom:0px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+}
+
+p {
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-left: 15px;
+}
+
+ul {
+    padding-left: 35px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px #cccccc;
+    width: 50%;
+    list-style: square;
+}
