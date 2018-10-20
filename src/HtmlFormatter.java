@@ -30,7 +30,7 @@ public class HtmlFormatter {
         rtn += "\t<meta charset=\"UTF-8\">";
         rtn += String.format("\t<meta name=\"author\" content=\"%s\">\n", author); // here is an example of String.format
         rtn += "\t<link rel=\"stylesheet\" href=\"http://static.colostate.edu/fonts/proxima-nova/proxima.css\">\n";
-        rtn += "\t<link href=http://www.cs.colostate.edu/~cs150/.Fall18/p5/support/style.css type=text/css rel=stylesheet>\n";
+        rtn += "\t<link href=http://www.cs.colostate.edu/~cs150/.Fall18/assignments/p5/support/style.css type=text/css rel=stylesheet>\n";
         rtn += "</head>\n<body>";
         return rtn;
     }
