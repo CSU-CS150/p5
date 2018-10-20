@@ -52,6 +52,7 @@ public class Practical5 {
      * @param title the title of the work in the file
      */
     void processFile(String filename, String author, String title) {
+        testingMethod(); // remove before final submit
         Scanner lines = getScanner(filename);  // gets either the file or system in
         if(lines == null) { return; } // if null is returned, then the file was not found
 
