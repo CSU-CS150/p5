@@ -10,7 +10,7 @@
  * @version 1.0
  */
 public class HtmlFormatter {
-    String author = "";
+    String author = "";  // stores the page author
 
 
     /**
@@ -28,54 +28,12 @@ public class HtmlFormatter {
     public String getHead() {
         String rtn = "<!DOCTYPE html>\n<html>\n<head>\n";
         rtn += "\t<meta charset=\"UTF-8\">";
-        rtn += String.format("\t<meta name=\"author\" content=\"%s\">\n", author);
+        rtn += String.format("\t<meta name=\"author\" content=\"%s\">\n", author); // here is an example of String.format
         rtn += "\t<link rel=\"stylesheet\" href=\"http://static.colostate.edu/fonts/proxima-nova/proxima.css\">\n";
         rtn += "\t<link href=http://www.cs.colostate.edu/~cs150/.Fall18/p5/support/style.css type=text/css rel=stylesheet>\n";
         rtn += "</head>\n<body>";
         return rtn;
     }
-
-    // Implement the methods - as specified in the assignment specifications. String.format may be needed.
-
-    public String getHeading(String text, int rank) {
-        return String.format("\t<h%d>%s</h%d>", rank, text, rank);
-    }
-
-    public String getHeading1(String text) {
-        return getHeading(text, 1);
-    }
-
-    public String getHeading2(String text) {
-        return getHeading(text, 2);
-    }
-
-    public String getHeading3(String text) {
-        return getHeading(text, 3);
-    }
-
-    public String getHeading4(String text) {
-        return getHeading(text, 4);
-    }
-
-
-    public String getParagraph(String text) {
-        return String.format("\t<p>%s</p>", text);
-    }
-
-
-
-    public String getListOpen() {
-        return "\t<ul>";
-    }
-
-    public String getListElement(String text) {
-        return String.format("\t\t<li>%s</li>", text);
-    }
-
-    public String getListClose() {
-        return "\t</ul>";
-    }
-
 
     /**
      * Closes the body of the HTML document
@@ -84,6 +42,9 @@ public class HtmlFormatter {
     public String getClose() {
        return "</body>\n</html>";
     }
+
+    // Implement the methods - as specified in the assignment specifications. String.format may be needed.
+
 
 
 

@@ -3,7 +3,10 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
 
+// DO NOT MODIFY THIS FILE - but you should look through it, especially the constant variables
+
 /**
+ *
  * WordDictionary loads a dictionary in the format of
  *
  * <pre>

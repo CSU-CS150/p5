@@ -41,23 +41,6 @@ public class Practical5 {
     int lineCounter = 0;
 
 
-    /**
-     *  Writes a string both to the System.out and to the PrintWriter which is {@link #writer}.
-     * @param str the string to write to both system.out and a file via PrintWriter writer
-     */
-    void output(String str) {
-        System.out.println(str);
-        writer.println(str);
-    }
-
-    /**
-     * Overloaded methos of {@link #processFile(String, String, String)}  Defaults
-     * passing in by default, it passes in "No Author" and "No Title"
-     * @param filename
-     */
-    void processFile(String filename) {
-        processFile(filename, "No author", "No title");
-    }
 
     /**
      * Reads a file or system in if Null is passed in for the file name. After the file is
@@ -80,144 +63,20 @@ public class Practical5 {
                 title = line.substring(line.indexOf(':')+1).trim(); // trim it and store it in the parameter
             } else if(line.startsWith("author:")) {  // author: will override the author parameter
                 author = "by " + line.substring(line.indexOf(':')+1).trim(); // trim it and store it in the parameter
-            } else processLine(line); // call process line which modifies the stats
+            } else  processLine(line); // call process line which modifies the stats
         }
 
         if(filename == null ) {writeHTMLHeader();} // in case the entry is command line  - else called outside this method
         // waiting to print to make sure everything is printed in order for valid HTML
-        output(html.getHeading2(title)); // printing the name of the work analyzed
-        output(html.getParagraph(author)); // printing the name of the author
-        writeOutStats(); // print out stats
-        resetStats(); // reset the variables, so the next file can be processed
-    }
-
-    /**
-     * Resets the counters to zero
-     */
-    void resetStats() {
-        nounCounter = 0;
-        verbCounter = 0;
-        interjectionCounter = 0;
-        conjunctionCounter = 0;
-        adjectiveCounter = 0;
-        pronounCounter = 0;
-        unknownCounter = 0;
-        wordCount = 0;
-        lineCounter = 0;
+        //TODO Uncomment these lines
+        //output(html.getHeading2(title)); // printing the name of the work analyzed
+        //output(html.getParagraph(author)); // printing the name of the author
+        //writeOutStats(); // print out stats
+        //resetStats(); // reset the variables, so the next file can be processed
     }
 
 
-    /**
-     * Cleans a word removing anything that isn't a standard alpha-letter. Digits and special characters
-     * are not removed. Additionally, it forces all characters to be lowercase.
-     * @param word the word to be 'cleaned'
-     * @return a lowercase word without digits or special characters
-     */
-    String cleanWord(String word) {
-        String rtn = "";
-        for(int i = 0; i < word.length(); i++) {
-            char tmp = word.charAt(i);
-            if(Character.isLetter(tmp)) {
-                rtn += tmp;
-            }
-        }
-        return rtn.toLowerCase();
-    }
 
-    /**
-     * Processes a single line in the file by calling a Scanner on the String line, and then
-     * cycling through each line. It will increment the counters based on the
-     * word that has been cleaned by cleanWord into dictionary to get the wordType.
-     * @param line The line to be processed and analysed
-     */
-    void processLine(String line) {
-        lineCounter++;
-        Scanner scanner = new Scanner(line);
-
-        String word;
-        while(scanner.hasNext()) {
-            word = cleanWord(scanner.next());
-            if(word.isEmpty()) continue;
-
-            wordCount++;
-            String type = dictionary.getWordType(word);
-
-            switch(type) {
-                case WordDictionary.ADJECTIVE:
-                    adjectiveCounter++;
-                    break;
-                case WordDictionary.CONJUNCTION:
-                    conjunctionCounter++;
-                    break;
-                case WordDictionary.NOUN:
-                    nounCounter++;
-                    break;
-                case WordDictionary.PRONOUN:
-                    pronounCounter++;
-                    break;
-                case WordDictionary.VERB:
-                    verbCounter++;
-                    break;
-               case WordDictionary.INTERJECTION:
-                    interjectionCounter++;
-                    break;
-                default:
-                    unknownCounter++;
-            }
-        } // end loop
-    }
-
-
-    /**
-     * Computes the percent  returns it as a String restricted by two decimals points. For example:
-     * <pre>
-     *     ints 2 and 19 are passed in, 10.52% is returned
-     *     ints 5 and 10 are passed in, 50.00% is returned
-     *     ints 6 and 100 are passed in, 6.00% is returned
-     * </pre>
-     *
-     * String.format is a useful method to look at.
-     *
-     * @param x  the first variable to be divided by
-     * @param y  the second variable to to divide the first by (x/y)
-     * @return  Returns a percent formatted by two decimal points. 1.00% etc
-     */
-    String percent(int x, int y) {
-        double dbl = (double)x / y;
-        return String.format("%.2f%%", dbl*100);
-    }
-
-
-    /**
-     * Write out the states as an HTML unordered list. Stats should be
-     * written in alphabetical order with the exception of Unknown and Words per line being last. For example:
-     * <pre>
-     *     <ul>
-     * 		<li>Adjective/Adverb Average: 33.33%</li>
-     * 		<li>Conjunction/Preposition Average: 0.00%</li>
-     * 		<li>Interjection Average: 16.67%</li>
-     * 		<li>Noun Average: 50.00%</li>
-     * 		<li>Pronoun Average: 0.00%</li>
-     * 		<li>Verb Average: 0.00%</li>
-     * 		<li>Unknown Average: 0.00%</li>
-     * 		<li>Words per line: 1.20</li>
-     * 	</ul>
-     * </pre>
-     * @see #percent(int, int)
-     */
-    void writeOutStats() {
-        output(html.getListOpen());
-        output(html.getListElement("Adjective/Adverb Average: " + percent(adjectiveCounter, wordCount)));
-        output(html.getListElement("Conjunction/Preposition Average: " + percent(conjunctionCounter, wordCount)));
-        output(html.getListElement("Interjection Average: " + percent(interjectionCounter, wordCount)));
-        output(html.getListElement("Noun Average: " + percent(nounCounter, wordCount)));
-        output(html.getListElement("Pronoun Average: " + percent(pronounCounter, wordCount)));
-        output(html.getListElement("Verb Average: " + percent(verbCounter, wordCount)));
-        output(html.getListElement("Unknown Average: " + percent(unknownCounter, wordCount)));
-        output(html.getListElement(String.format("Words per line: %.2f", (double)wordCount / lineCounter)));
-        output(html.getListClose());
-
-    }
 
 
 
