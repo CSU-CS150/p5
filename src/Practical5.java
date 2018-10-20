@@ -12,8 +12,8 @@ import java.util.Scanner;
  * of that word, and categorize them all. After that, it will print out the stats to
  * both the console and an html file.
  *
- * @author Albert Lionelle <br>
- *         lionelle@colostate.edu <br>
+ * @author YOUR NAME <br>
+ *         YOUR EMAIL <br>
  *         Computer Science Department <br>
  *         Colorado State University
  * @version 1.0
@@ -21,7 +21,7 @@ import java.util.Scanner;
 public class Practical5 {
 
 
-    final static String AUTHOR          = "Albert Lionelle";
+    final static String AUTHOR          = "Albert Lionelle"; //TODO: change to your name
     final static String DEFAULT_OUTPUT  = "out.html"; // do not modify
     final static String DICTIONARY_FILE = "dictionary.txt"; // do not modify
 
@@ -76,7 +76,13 @@ public class Practical5 {
     }
 
 
+    void testingMethod() {
+        System.out.println("TESTING");
+        // use this method to test various features as you implement them. You should then remove it on your final submission
+        // example System.out.println(html.heading1("Testing Heading 1"));
+        // example System.out.println(html.heading2("Testing Heading 2"));
 
+    }
 
 
 
