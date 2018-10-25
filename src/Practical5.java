@@ -21,7 +21,7 @@ import java.util.Scanner;
 public class Practical5 {
 
 
-    final static String AUTHOR          = "Albert Lionelle"; //TODO: change to your name
+    final static String AUTHOR          = "YOUR NAME"; //TODO: change to your name
     final static String DEFAULT_OUTPUT  = "out.html"; // do not modify
     final static String DICTIONARY_FILE = "dictionary.txt"; // do not modify
 
