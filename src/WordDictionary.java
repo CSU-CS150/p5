@@ -3,10 +3,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
 
-// DO NOT MODIFY THIS FILE - but you should look through it, especially the constant variables
-
 /**
- *
  * WordDictionary loads a dictionary in the format of
  *
  * <pre>
@@ -20,7 +17,8 @@ import java.util.TreeMap;
  *      <li> P = pronoun </li>
  *      <li> V = verb </li>
  *      <li> N = noun </li>
- *      <li> I = interjection</li>*
+ *      <li> S = Spoken contraction</li>
+ *      <li> I = interjection</li>
  *  </ul>
  *
  * It leads the dictionary into a 'map' that allows for quick access of the words and their part. For simplicity
@@ -50,9 +48,10 @@ public class WordDictionary {
     public static final String VERB =  "V"; //"verb";
     public static final String NOUN = "N"; //"noun";
     public static final String INTERJECTION = "I";
+    public static final String SPOKEN = "S"; // examples kinda, gonna
     public static final String UNKNOWN = "xxUNKNOWNNxx";
 
-    private static final String DICTIONARY_DELIMITER = ":";
+    private static final String DICTIONARY_DELIMITER = " ";
 
 
     /**
@@ -82,15 +81,15 @@ public class WordDictionary {
             word = word.substring(1); // ignore first letter if it is a special character - dictionary stuff.
         }
         int index = line.indexOf(DICTIONARY_DELIMITER); // look for the the : key in finding it
-        String part = line.substring(index -1, index);  // it is only a single character with the : after the part
+        String part = line.substring(index +1, index+2);  // it is only a single character with the : after the part
         if(! dict.containsKey(word)) dict.put(word, part); // only add words once for this class
     }
 
     /**
-     * Loads a passed in file into the dictionary
+     * Constructor for word dictionary, as it cannot operate without the file to laod
      * @param filename the name of the file to load
      */
-    public void loadFile(String filename) {
+    public  WordDictionary(String filename) {
         try {
             Scanner scanner = new Scanner(new File(filename));
 

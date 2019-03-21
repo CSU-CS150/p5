@@ -3,8 +3,8 @@
  * This file converts passed in text by surrounding it with the correct HTML tags. It does not do
  *  any writing to an HTML file on its only, but simply return strings.
  *
- * @author Albert Lionelle <br>
- *         lionelle@colostate.edu <br>
+ * @author YOUR NAME <br>
+ *          YOUR EMAIL <br>
  *         Computer Science Department <br>
  *         Colorado State University
  * @version 1.0
